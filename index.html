@@ -4,22 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kartuş Üyelik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --blue-light-1:#5aa7f0;
-    --blue-light-2:#3f8ef0;
-    --blue-deep-1:#1c3fe0;
-    --blue-deep-2:#1230c9;
+    --genc-bg-1:#2b53f5;
+    --genc-bg-2:#1230d6;
+    --genc-accent:#9fe6ff;
+    --club-bg-1:#0c1f4a;
+    --club-bg-2:#08152f;
+    --club-accent:#e9c993;
     --ink:#0d1b3e;
     --muted:#6b7690;
-    --paper:#ffffff;
-    --bg:#f4f6fb;
-    --radius:20px;
+    --bg:#f2f3f6;
+    --radius:22px;
   }
   *{box-sizing:border-box;}
   body{
     margin:0;
-    font-family:'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    font-family:'Poppins', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
     background:var(--bg);
     color:var(--ink);
     display:flex;
@@ -28,105 +32,122 @@
   }
   .screen{
     width:100%;
-    max-width:420px;
+    max-width:460px;
     padding:0 20px;
   }
   h1.title{
     text-align:center;
     font-size:20px;
     font-weight:700;
-    margin:8px 0 20px;
+    margin:8px 0 22px;
     letter-spacing:-0.2px;
   }
   .card{
     position:relative;
     border-radius:var(--radius);
-    padding:22px 22px 18px;
+    padding:28px 24px 24px;
     color:#fff;
-    margin-bottom:18px;
+    margin-bottom:20px;
     overflow:hidden;
-    box-shadow:0 10px 24px rgba(20,50,120,0.15);
+    box-shadow:0 14px 30px rgba(10,20,60,0.18);
   }
-  .card.light{
-    background:linear-gradient(135deg, var(--blue-light-1), var(--blue-light-2));
+  .card.genc{
+    background:linear-gradient(150deg, var(--genc-bg-1), var(--genc-bg-2) 75%);
   }
-  .card.deep{
-    background:linear-gradient(135deg, var(--blue-deep-1), var(--blue-deep-2));
-    margin-top:4px;
+  .card.club{
+    background:linear-gradient(150deg, var(--club-bg-1), var(--club-bg-2) 80%);
   }
   .badge-new{
     position:absolute;
-    top:16px;
-    right:18px;
-    background:#22c98f;
-    color:#fff;
-    font-size:11px;
-    font-weight:700;
-    padding:5px 11px;
-    border-radius:999px;
-    letter-spacing:0.3px;
-  }
-  .logo{
-    font-weight:800;
-    font-size:26px;
-    letter-spacing:-0.5px;
-    margin-bottom:2px;
-  }
-  .logo .genc{
-    display:block;
-    font-size:24px;
-    margin-top:-4px;
-  }
-  .perks{
-    display:flex;
-    margin-top:18px;
-    padding-top:14px;
-    border-top:1px solid rgba(255,255,255,0.28);
-    gap:10px;
-  }
-  .perk{
-    flex:1;
-    text-align:center;
-    font-size:11.5px;
-    line-height:1.35;
-    font-weight:500;
-  }
-  .perk + .perk{
-    border-left:1px solid rgba(255,255,255,0.28);
-    padding-left:10px;
-  }
-  .perk-icon{
-    width:30px;
-    height:30px;
-    margin:0 auto 6px;
-    border:1.5px solid rgba(255,255,255,0.85);
+    top:20px;
+    right:20px;
+    width:56px;
+    height:56px;
     border-radius:50%;
+    border:1.5px solid var(--genc-accent);
+    color:var(--genc-accent);
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:13px;
+    font-size:10.5px;
     font-weight:700;
+    letter-spacing:0.3px;
+    text-align:center;
   }
+  .brand{
+    font-family:'Playfair Display', Georgia, serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:30px;
+    letter-spacing:-0.2px;
+    margin:0 0 22px;
+    padding-right:40px;
+  }
+  .card.club .brand{ color:#fff; }
+  .card.genc .brand{ color:#fff; }
+
+  .perks{
+    display:flex;
+    gap:14px;
+  }
+  .perk{
+    flex:1;
+    text-align:left;
+    font-size:12.5px;
+    line-height:1.4;
+    font-weight:400;
+  }
+  .perk + .perk{
+    border-left:1px solid rgba(255,255,255,0.25);
+    padding-left:14px;
+  }
+  .perk b{
+    display:block;
+    font-weight:700;
+    margin-top:2px;
+  }
+  .perk-icon{
+    display:block;
+    width:38px;
+    height:38px;
+    margin-bottom:14px;
+  }
+  .card.genc .perk-icon{ color:var(--genc-accent); }
+  .card.club .perk-icon{ color:var(--club-accent); }
+  .perk-icon svg{
+    display:block;
+    width:100%;
+    height:100%;
+    stroke:currentColor;
+    fill:none;
+    stroke-width:1.4;
+  }
+
   .more-link{
     display:block;
-    margin-top:14px;
-    font-size:11.5px;
+    width:fit-content;
+    margin:26px auto 0;
+    text-align:center;
+    font-size:13px;
+    font-weight:600;
     text-decoration:underline;
-    color:#fff;
-    opacity:0.95;
+    text-underline-offset:4px;
   }
+  .card.genc .more-link{ color:var(--genc-accent); }
+  .card.club .more-link{ color:var(--club-accent); }
+
   .invite{
     text-align:center;
     font-weight:700;
     font-size:14px;
-    color:var(--blue-deep-1);
-    margin:22px 0 10px;
+    color:var(--genc-bg-2);
+    margin:22px 0 8px;
   }
   .section-title{
     text-align:center;
     font-size:19px;
     font-weight:800;
-    margin:26px 0 16px;
+    margin:28px 0 16px;
   }
   .field{
     width:100%;
@@ -138,13 +159,17 @@
     margin-bottom:14px;
     outline:none;
     transition:border-color .15s ease, box-shadow .15s ease;
+    font-family:inherit;
   }
   .field::placeholder{color:#9aa3b8;}
   .field:focus{
-    border-color:var(--blue-deep-1);
+    border-color:var(--genc-bg-2);
     box-shadow:0 0 0 3px rgba(28,63,224,0.12);
   }
   .cta{
+    display:flex;
+    align-items:center;
+    justify-content:center;
     width:100%;
     padding:16px;
     border:none;
@@ -153,19 +178,24 @@
     color:#fff;
     font-size:15.5px;
     font-weight:700;
+    text-decoration:none;
     cursor:pointer;
+    font-family:inherit;
     transition:opacity .15s ease, transform .1s ease;
   }
   .cta:hover{opacity:0.9;}
   .cta:active{transform:scale(0.99);}
   .cta:focus-visible, .field:focus-visible{
-    outline:2px solid var(--blue-deep-1);
+    outline:2px solid var(--genc-bg-2);
     outline-offset:2px;
   }
 
-  @media (max-width:360px){
-    .perk{font-size:10.5px;}
-    .logo{font-size:23px;}
+  @media (max-width:380px){
+    .perks{gap:8px;}
+    .perk{font-size:11px;}
+    .perk + .perk{padding-left:8px;}
+    .brand{font-size:25px;}
+    .perk-icon{width:30px;height:30px;margin-bottom:10px;}
   }
 </style>
 </head>
@@ -173,20 +203,26 @@
   <div class="screen">
     <h1 class="title">Senin Kartuş'un Hangisi?</h1>
 
-    <div class="card light">
-      <div class="logo">kartuş</div>
+    <div class="card club">
+      <div class="brand">kartuş <i>Club</i></div>
       <div class="perks">
         <div class="perk">
-          <div class="perk-icon">3</div>
-          Sezon alışverişlerinde %3 puan kazan
+          <span class="perk-icon">
+            <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17"/><line x1="13" y1="27" x2="27" y2="13"/><circle cx="15.5" cy="15.5" r="1.6" fill="currentColor" stroke="none"/><circle cx="24.5" cy="24.5" r="1.6" fill="currentColor" stroke="none"/></svg>
+          </span>
+          Sezon alışverişlerinde<b>%3 puan kazan</b>
         </div>
         <div class="perk">
-          <div class="perk-icon">🛍</div>
-          İlk alışverişinde 500 TL'ye varan puan
+          <span class="perk-icon">
+            <svg viewBox="0 0 40 40"><path d="M11 15h18l-1.6 18a2 2 0 0 1-2 1.8H14.6a2 2 0 0 1-2-1.8L11 15z"/><path d="M15 15v-3a5 5 0 0 1 10 0v3"/></svg>
+          </span>
+          İlk alışverişinde<b>500 TL'ye varan puan</b>
         </div>
         <div class="perk">
-          <div class="perk-icon">✦</div>
-          Kişiye özel kampanyalar
+          <span class="perk-icon">
+            <svg viewBox="0 0 40 40"><path d="M20 8l3.2 7.6L31 17l-5.6 5.6L26.8 31 20 26.9 13.2 31l1.4-8.4L9 17l7.8-1.4L20 8z"/><line x1="6" y1="10" x2="8.5" y2="12"/><line x1="34" y1="10" x2="31.5" y2="12"/><line x1="6" y1="28" x2="8.5" y2="26"/></svg>
+          </span>
+          Kişiye özel<b>kampanyalar</b>
         </div>
       </div>
       <a href="#" class="more-link">Daha Fazlası</a>
@@ -194,29 +230,34 @@
 
     <p class="invite">24 yaşın altındaysan Kartuş Genç'e davetlisin!</p>
 
-    <div class="card deep">
+    <div class="card genc">
       <span class="badge-new">YENİ</span>
-      <div class="logo">kartuş<span class="genc">GENÇ</span></div>
+      <div class="brand">kartuş <i>Genç</i></div>
       <div class="perks">
         <div class="perk">
-          <div class="perk-icon">5</div>
-          Sezon alışverişlerinde %5 puan kazan
+          <span class="perk-icon">
+            <svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17"/><line x1="13" y1="27" x2="27" y2="13"/><circle cx="15.5" cy="15.5" r="1.6" fill="currentColor" stroke="none"/><circle cx="24.5" cy="24.5" r="1.6" fill="currentColor" stroke="none"/></svg>
+          </span>
+          Sezon alışverişlerinde<b>%5 puan kazan</b>
         </div>
         <div class="perk">
-          <div class="perk-icon">🛍</div>
-          500 TL'ye hediye puan anında cebinde
+          <span class="perk-icon">
+            <svg viewBox="0 0 40 40"><path d="M11 15h18l-1.6 18a2 2 0 0 1-2 1.8H14.6a2 2 0 0 1-2-1.8L11 15z"/><path d="M15 15v-3a5 5 0 0 1 10 0v3"/><path d="M20 18v9"/><path d="M17 20.5c0-1.4 1.3-2.5 3-2.5s3 1.1 3 2.5-1.3 2.5-3 2.5-3 1.1-3 2.5 1.3 2.5 3 2.5 3-1.1 3-2.5"/></svg>
+          </span>
+          500 TL'ye hediye puan<b>anında cebinde</b>
         </div>
         <div class="perk">
-          <div class="perk-icon">📱</div>
-          Online'a özel ücretsiz kargo
+          <span class="perk-icon">
+            <svg viewBox="0 0 40 40"><rect x="7" y="9" width="12" height="22" rx="2"/><line x1="10" y1="14" x2="15" y2="14"/><line x1="10" y1="18" x2="14" y2="18"/><path d="M21 21h9l4 4v4a1.3 1.3 0 0 1-1.3 1.3H21z"/><circle cx="24.5" cy="30.5" r="1.8"/><circle cx="32" cy="30.5" r="1.8"/></svg>
+          </span>
+          Online'a özel<b>ücretsiz kargo</b>
         </div>
       </div>
       <a href="#" class="more-link">Daha Fazlası</a>
     </div>
 
     <h2 class="section-title">Üye Ol / Giriş Yap</h2>
-    <input class="field" type="tel" placeholder="Telefon Numarası" inputmode="numeric">
-    <button class="cta" type="button">Devam Et</button>
+    <a class="cta" href="https://account.jeordiesmen.com/authentication/login?analytics_trace_id=d1e45d86-cd2d-4e01-9909-cf356278bd5c&client_id=8a91b2ef-51d8-4252-b453-3cb38dcf97a0&locale=en-HR&redirect_uri=%2Fauthentication%2Foauth%2Fauthorize%3Fanalytics_trace_id%3Dd1e45d86-cd2d-4e01-9909-cf356278bd5c%26buyer_flags%3DeyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwNXpoc3ctdTAubXlzaG9waWZ5LmNvbSIsImZsYWdzIjpbXSwiZXhwIjoxNzg3NTk5ODEzLCJuYmYiOjE3ODY5OTUwMTN9.J3zMFyJKBN4UN5MoQ9XHkXJloLQEc62LzXKW4FxcsRE%26client_id%3D8a91b2ef-51d8-4252-b453-3cb38dcf97a0%26locale%3Den-HR%26nonce%3Dd0c0259f-d63b-47e2-affd-55eed9a3599d%26redirect_uri%3Dhttps%253A%252F%252Faccount.jeordiesmen.com%252Fcallback%26region_country%3DHR%26response_type%3Dcode%26scope%3Dopenid%2Bemail%2Bcustomer-account-api%253Afull%26state%3DhWNFloIiJzuCUb3T8O32mJhD&region_country=HR">Sign With email</a>
   </div>
 </body>
 </html>
